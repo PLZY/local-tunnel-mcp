@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Local Tunnel</title><link rel="icon" href="/icon.png"><link rel="stylesheet" href="/style.css"><script src="/app.js" defer></script></head>
+<body><main>
+<header><h1>Local Tunnel</h1><span>当前设备：<b id="device-label"></b></span></header>
+<div class="connections-bar"><nav id="connections" role="tablist" aria-label="服务器连接"></nav><button id="add-connection" type="button" class="secondary">新增连接</button></div>
+<section id="connection-panel" class="card" role="tabpanel" tabindex="0">
+<div class="topline"><div class="status"><span id="tunnel-dot" class="dot"></span><b id="tunnel"></b><span id="connection"></span><span id="operation"></span></div><label class="switch"><input id="enabled" type="checkbox">开启远程访问</label></div>
+<p id="connection-error" class="notice error" role="alert"></p><p id="shell-warning" class="notice error" role="alert"></p>
+<form id="settings"><div class="grid">
+<label class="span-2">连接名称<input id="connection-name" maxlength="80" placeholder="例如：公司服务器" required autocomplete="off"></label>
+<label class="span-3">服务器地址<input name="sshHost" placeholder="IP 或域名" required autocomplete="off"></label>
+<label class="span-1">SSH 端口<input name="sshPort" type="number" min="1" max="65535" required></label>
+<label class="span-2">用户名<input name="sshUser" placeholder="登录服务器的账号，例如 root" required autocomplete="off"></label>
+<label class="span-2">登录方式<select name="authMethod"><option value="key">密钥</option><option value="password">密码</option></select></label>
+<label id="password-field" class="span-2">密码<input name="password" type="password" autocomplete="new-password"></label>
+<label id="identity-field" class="span-2">私钥路径<input name="identityFile" placeholder="留空使用默认密钥" autocomplete="off"></label>
+<label class="span-2">服务器转发端口<input name="remotePort" type="number" min="1" max="65535" title="AI 在服务器上通过这个端口访问本机。同一台服务器上，每台电脑要用不同的端口" required></label>
+<label class="span-4">允许 AI 访问的目录<textarea name="allowedPaths" rows="2" placeholder="每行一个目录" required></textarea></label>
+</div>
+<details class="advanced"><summary>高级设置</summary><div class="grid">
+<label class="span-2">设备名称<input name="deviceId" placeholder="默认使用本机名称" pattern="[a-zA-Z0-9][a-zA-Z0-9_\-]{0,63}" maxlength="64" required autocomplete="off" spellcheck="false" title="AI 用这个名称区分不同电脑"></label>
+<label class="span-1">本机端口<input name="port" type="number" min="1" max="65535" required></label>
+<label class="span-1">输出上限 (KB)<input name="mcpOutputLimitKb" type="number" min="0" max="65536" title="命令输出超出时只返回开头和结尾；0 表示不限" required></label>
+<label id="pwsh-field" class="span-2" hidden>PowerShell 7 路径<input name="pwshPath" placeholder="pwsh"></label>
+</div></details>
+<div class="actions"><button id="save" type="submit">保存</button><button id="test-ssh" type="button" class="secondary">测试连接</button><button id="copy" type="button" class="secondary">复制 MCP 配置</button><p id="message" class="notice" role="status" aria-live="polite"></p><button id="delete-connection" type="button" class="secondary danger">删除连接</button></div>
+</form>
+</section>
+</main>
+<dialog id="trust-dialog" aria-labelledby="trust-title"><h2 id="trust-title">是否信任此服务器？</h2><p id="trust-description"></p><p id="trust-address"></p><code id="trust-fingerprint"></code><p id="trust-previous" class="notice error"></p><p class="help">信任后会保存在本机，后续连接无需重复确认。</p><div class="actions"><button id="trust-accept" type="button">信任并连接</button><button id="trust-cancel" type="button" class="secondary">取消</button></div></dialog>
+</body></html>

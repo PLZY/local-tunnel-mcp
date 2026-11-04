@@ -1,0 +1,32 @@
+{
+  "name": "local-tunnel",
+  "version": "1.0.0",
+  "description": "让 SSH 服务器上的 AI 编程工具通过反向隧道和 MCP 访问你本机的文件与命令行",
+  "license": "SEE LICENSE IN LICENSE",
+  "repository": "github:PLZY/local-tunnel-mcp",
+  "keywords": [
+    "mcp",
+    "model-context-protocol",
+    "ssh",
+    "reverse-tunnel",
+    "claude-code",
+    "codex"
+  ],
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "start": "node src/launcher.js start",
+    "stop": "node src/launcher.js stop",
+    "serve": "node src/server.js",
+    "test": "node --test test/*.test.js"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.2"
+  },
+  "dependencies": {
+    "ssh2": "^1.17.0"
+  }
+}
