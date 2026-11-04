@@ -1,6 +1,6 @@
 name: release
 
-# Pushing a v* tag publishes a release. Running it by hand only builds the packages for testing.
+# Pushing a v* tag publishes a release. A manual run only builds the packages for testing.
 on:
   push:
     tags: ['v*']
