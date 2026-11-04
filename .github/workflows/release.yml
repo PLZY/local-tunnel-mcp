@@ -15,12 +15,9 @@ jobs:
         with:
           node-version: 22
       - run: node tools/pack.mjs win-x64
-      - run: choco install innosetup -y --no-progress
-      - name: Build installer
+      - name: Build app
         shell: pwsh
-        run: |
-          $env:APP_VERSION=node -p "require('./package.json').version"
-          & "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe" packaging\windows\local-tunnel.iss
+        run: packaging/windows/build.ps1 -Version (node -p "require('./package.json').version")
       - uses: actions/upload-artifact@v4
         with:
           name: windows

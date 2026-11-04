@@ -16,16 +16,15 @@
 
 ## 安装
 
-从 [Releases](https://github.com/PLZY/local-tunnel-mcp/releases/latest) 下载对应系统的安装包，运行环境已经打包在内，不用再装 Node.js。
+从 [Releases](https://github.com/PLZY/local-tunnel-mcp/releases/latest) 下载对应系统的程序，运行环境已经打包在内，不用再装 Node.js。
 
-安装包没有购买代码签名，所以系统会弹出安全提示，按下面的步骤放行即可。
+程序没有购买代码签名，所以系统会弹出安全提示，按下面的步骤放行即可。
 
 ### Windows
 
-1. 下载 `LocalTunnel-Setup-x.x.x.exe` 并双击。
+1. 下载 `LocalTunnel-x.x.x.exe`，双击即可运行，无需安装。首次打开需要几秒钟。
 2. 如果出现“Windows 已保护你的电脑”，点击「更多信息」，再点击「仍要运行」。
-3. 完成安装后，从开始菜单打开 Local Tunnel。
-4. 安装 PowerShell 7，AI 执行命令时需要用到：
+3. 安装 PowerShell 7，AI 执行命令时需要用到：
 
    ```powershell
    winget install --id Microsoft.PowerShell
@@ -33,7 +32,7 @@
 
 ### macOS
 
-1. 下载对应芯片的安装包：Apple 芯片选 `LocalTunnel-x.x.x-arm64.dmg`，Intel 芯片选 `LocalTunnel-x.x.x-x64.dmg`。
+1. 下载对应芯片的程序：Apple 芯片选 `LocalTunnel-x.x.x-arm64.dmg`，Intel 芯片选 `LocalTunnel-x.x.x-x64.dmg`。
 2. 打开 dmg，把 LocalTunnel 拖到 Applications 文件夹。
 3. 打开“终端”，执行下面的命令：
 

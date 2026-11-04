@@ -18,14 +18,13 @@ Connect all your computers to one server and it becomes your control center: wor
 
 Download the package for your system from [Releases](https://github.com/PLZY/local-tunnel-mcp/releases/latest). The runtime is included, so you do not need to install Node.js.
 
-The packages are not code-signed, so your system will show a security warning. Follow the steps below to allow the app.
+The apps are not code-signed, so your system will show a security warning. Follow the steps below to allow the app.
 
 ### Windows
 
-1. Download `LocalTunnel-Setup-x.x.x.exe` and double-click it.
+1. Download `LocalTunnel-x.x.x.exe` and double-click it. It runs without installing. The first launch takes a few seconds.
 2. If you see "Windows protected your PC", click **More info**, then **Run anyway**.
-3. After installing, open Local Tunnel from the Start menu.
-4. Install PowerShell 7, which the AI needs to run commands:
+3. Install PowerShell 7, which the AI needs to run commands:
 
    ```powershell
    winget install --id Microsoft.PowerShell

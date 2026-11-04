@@ -4,7 +4,7 @@
 // so any machine can build any target.
 import {execFileSync} from 'node:child_process';
 import {createHash} from 'node:crypto';
-import {cp,mkdir,readFile,rm,writeFile} from 'node:fs/promises';
+import {cp,mkdir,rm,writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
@@ -38,11 +38,4 @@ execFileSync('tar',['-xf',archive,member],{cwd:output,stdio:'inherit'});
 await cp(path.join(output,member),path.join(app,'runtime',path.basename(member)));
 await rm(path.join(output,archive));
 await rm(path.join(output,name),{recursive:true});
-
-// Windows PowerShell 5 reads a script without a BOM in the system code page.
-if(windows){
-  const tray=await readFile(path.join(root,'packaging','windows','tray.ps1'),'utf8');
-  await writeFile(path.join(app,'tray.ps1'),'﻿'+tray);
-  await cp(path.join(root,'packaging','icons','icon.ico'),path.join(app,'icon.ico'));
-}
 console.log(`Packed ${target} with Node ${process.version}: ${app}`);
